@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.5.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.gleisser.social.profile</groupId>
-	<artifactId>social-profile-service</artifactId>
+	<groupId>com.gleisser.social.registry</groupId>
+	<artifactId>social-registry</artifactId>
 	<version>0.1-SNAPSHOT</version>
-	<name>social-profile-service</name>
-	<description>API gateway to access all microservices endpoints using a single entry point</description>
+	<name>social-registry</name>
+	<description>Eureka Server to register and discovery every microservice</description>
 
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
 		<jib-maven-plugin.version>1.2.0</jib-maven-plugin.version>
-		<lombok.version>1.18.8</lombok.version>
 	</properties>
 
 	<dependencies>
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web-services</artifactId>
-		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 
 		<dependency>
@@ -39,29 +31,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
-
 	</dependencies>
 
 	<dependencyManagement>
@@ -98,7 +67,7 @@
 							<image>adoptopenjdk/openjdk8:slim</image>
 						</from>
 						<to>
-							<image>socialprofileservice:latest</image>
+							<image>socialregistry:latest</image>
 						</to>
 						<container>
 							<entrypoint>
@@ -108,11 +77,11 @@
 									/entrypoint.sh</arg>
 							</entrypoint>
 							<ports>
-								<port>8082</port>
+								<port>8761</port>
 							</ports>
 							<environment>
 								<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-								<SOCIAL_SLEEP>10</SOCIAL_SLEEP>
+								<SOCIAL_SLEEP>0</SOCIAL_SLEEP>
 							</environment>
 							<useCurrentTimestamp>true</useCurrentTimestamp>
 						</container>
@@ -121,4 +90,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
 </project>

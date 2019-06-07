@@ -9,26 +9,32 @@
 		<version>2.1.5.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.gleisser.social.profile</groupId>
-	<artifactId>social-profile-service</artifactId>
+	<groupId>com.gleisser.social.gateway</groupId>
+	<artifactId>social-gateway</artifactId>
 	<version>0.1-SNAPSHOT</version>
-	<name>social-profile-service</name>
+	<name>social-gateway</name>
 	<description>API gateway to access all microservices endpoints using a single entry point</description>
 
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
 		<jib-maven-plugin.version>1.2.0</jib-maven-plugin.version>
-		<lombok.version>1.18.8</lombok.version>
 	</properties>
 
 	<dependencies>
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web-services</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-gateway</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -39,29 +45,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
-
 	</dependencies>
 
 	<dependencyManagement>
@@ -88,37 +76,38 @@
 			</plugin>
 		</plugins>
 		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>com.google.cloud.tools</groupId>
-					<artifactId>jib-maven-plugin</artifactId>
-					<version>${jib-maven-plugin.version}</version>
-					<configuration>
-						<from>
-							<image>adoptopenjdk/openjdk8:slim</image>
-						</from>
-						<to>
-							<image>socialprofileservice:latest</image>
-						</to>
-						<container>
-							<entrypoint>
-								<shell>sh</shell>
-								<option>-c</option>
-								<arg>chmod +x /entrypoint.sh &amp;&amp; sync &amp;&amp;
-									/entrypoint.sh</arg>
-							</entrypoint>
-							<ports>
-								<port>8082</port>
-							</ports>
-							<environment>
-								<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-								<SOCIAL_SLEEP>10</SOCIAL_SLEEP>
-							</environment>
-							<useCurrentTimestamp>true</useCurrentTimestamp>
-						</container>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-maven-plugin</artifactId>
+						<version>${jib-maven-plugin.version}</version>
+						<configuration>
+							<from>
+								<image>adoptopenjdk/openjdk8:slim</image>
+							</from>
+							<to>
+								<image>socialgateway:latest</image>
+							</to>
+							<container>
+								<entrypoint>
+									<shell>sh</shell>
+									<option>-c</option>
+									<arg>chmod +x /entrypoint.sh &amp;&amp; sync &amp;&amp;
+										/entrypoint.sh</arg>
+								</entrypoint>
+								<ports>
+									<port>8080</port>
+								</ports>
+								<environment>
+									<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
+									<SOCIAL_SLEEP>10</SOCIAL_SLEEP>
+								</environment>
+								<useCurrentTimestamp>true</useCurrentTimestamp>
+							</container>
+						</configuration>
+					</plugin>
+				</plugins>
+			</pluginManagement>
 	</build>
+
 </project>

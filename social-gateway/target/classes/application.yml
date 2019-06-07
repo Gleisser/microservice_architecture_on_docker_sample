@@ -16,7 +16,3 @@ spring:
         uri: lb://social-user-service
         predicates:
         - Path=/user/**
-      - id: social-profile-service
-        uri: lb://social-profile-service
-        predicates:
-        - Path=/profile/**

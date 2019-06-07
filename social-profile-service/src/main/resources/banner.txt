@@ -1,0 +1,8 @@
+ ______   ______     ______     ______   __     __         ______    
+/\  == \ /\  == \   /\  __ \   /\  ___\ /\ \   /\ \       /\  ___\   
+\ \  _-/ \ \  __<   \ \ \/\ \  \ \  __\ \ \ \  \ \ \____  \ \  __\   
+ \ \_\    \ \_\ \_\  \ \_____\  \ \_\    \ \_\  \ \_____\  \ \_____\ 
+  \/_/     \/_/ /_/   \/_____/   \/_/     \/_/   \/_____/   \/_____/ 
+  
+${AnsiColor.BRIGHT_BLUE}:: Builded by Gleisser Santos 🤓  :: Running Spring Boot ${spring-boot.version} ::
+:: https://github.com/Gleisser ::${AnsiColor.DEFAULT}
