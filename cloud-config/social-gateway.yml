@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: social-user-service
+        uri: lb://social-user-service
+        predicates:
+        - Path=/user/**
+      - id: social-profile-service
+        uri: lb://social-profile-service
+        predicates:
+        - Path=/profile/**   
+info:
+  app:
+    name: @project.name@
+    version: @project.version@
+    decription: @project.version@
