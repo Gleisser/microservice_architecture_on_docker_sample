@@ -1,0 +1,11 @@
+swagger:
+    contact:
+        email: 'gleisserctba@hotmail.com'
+        name: 'Gleisser Santos'
+        url: 'https://github.com/Gleisser'
+    description: @project.description@
+    license: 'Apache License 2.0'
+    licenseUrl: 'https://www.apache.org/licenses/LICENSE-2.0'
+    termsOfServiceUrl: 'https://www.apache.org/licenses/LICENSE-2.0'
+    title: @project.name@
+    version: @project.version@
