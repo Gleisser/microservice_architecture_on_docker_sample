@@ -16,6 +16,18 @@ spring:
         
 info:
   app:
-    name: @project.name@
-    version: @project.version@
-    decription: @project.version@
+    name: social-gateway
+    version: 0.1
+    decription: API gateway to access all microservices endpoints using a single entry point
+
+swagger:
+    contact:
+        email: 'gleisser.santos@skytv.co.nz'
+        name: 'Gleisser Santos'
+        url: 'https://github.com/Gleisser'
+    description: 'API gateway to access all microservices endpoints using a single entry point'
+    license: 'Apache License 2.0'
+    licenseUrl: 'https://www.apache.org/licenses/LICENSE-2.0'
+    termsOfServiceUrl: 'https://www.apache.org/licenses/LICENSE-2.0'
+    title: 'social-gateway'
+    version: '1.0'
