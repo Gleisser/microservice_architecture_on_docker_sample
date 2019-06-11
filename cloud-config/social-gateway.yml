@@ -30,3 +30,7 @@ swagger:
     termsOfServiceUrl: 'https://www.apache.org/licenses/LICENSE-2.0'
     title: 'social-gateway'
     version: '1.0'
+
+auth0:
+  issuer: https://dev--ant9zms.au.auth0.com/
+  apiAudience: https://dev--ant9zms.au.auth0.com/api/v2/
