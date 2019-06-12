@@ -9,10 +9,13 @@ spring:
         uri: lb://social-user-service
         predicates:
         - Path=/user/**
+        filters:
+        -JWTFilter=RSA256,HS256
       - id: social-profile-service
         uri: lb://social-profile-service
         predicates:
-        - Path=/profile/**   
+        - Path=/profile/**
+
 info:
   app:
     name: social-gateway
