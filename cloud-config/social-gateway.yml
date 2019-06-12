@@ -10,7 +10,7 @@ spring:
         predicates:
         - Path=/user/**
         filters:
-        -JWTFilter=RSA256,HS256
+        - JWTFilter=RSA256,HS256
       - id: social-profile-service
         uri: lb://social-profile-service
         predicates:
